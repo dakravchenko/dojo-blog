@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, computed, watch, watchEffect } from 'vue';
 
 
 export default {
@@ -17,11 +17,24 @@ export default {
     const search = ref('')
     const names = ref(['mario', 'luigi','yoshi','peach'])
 
+    const stopWatch = watch(search, () => {
+      console.log('watch func run')
+    })
+
+    const stopEffect = watchEffect(() => {
+      console.log('watchEffect func run', search.value)
+    })
+
     const matchingNames = computed(() => {
       return names.value.filter((name) => name.includes(search.value))
     })
 
-    return {names, search, matchingNames}
+    const handleClick = () => {
+      stopWatch()
+      stopEffect()
+    }
+
+    return {names, search, matchingNames, handleClick}
   }
   
 }
