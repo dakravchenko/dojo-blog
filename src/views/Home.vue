@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <p ref="p">My name is {{ name  }} and my age is {{ age }}</p>
-    <button @click="handleClick">you clicked me</button>
-    <button @click="age++">add 1 to age</button>
-    <input type="text" v-model="name">
+    <p>{{ ninjaOne.age }} -- {{ ninjaOne.name }}</p>
+    <p>{{ ninjaTwo.age }} -- {{ ninjaTwo.name }}</p>
+    <button @click="updateNinjaOne">Update ninja one</button>
+    <button @click="updateNinjaTwo">Update ninja two</button>
   </div>
 </template>
 
@@ -14,16 +14,17 @@ import { ref, reactive } from 'vue';
 export default {
   name: 'Home',
   setup(){
+    const ninjaOne = ref({name: 'mario', age: 30})
+    const ninjaTwo = reactive({name: 'luigi', age: 35})
 
-    let name = ref('mario');
-    let age = ref(30)
-
-    const handleClick = () => {
-      name.value = 'luigi'
-      age.value = '35'
+    const updateNinjaOne = () => {
+      ninjaOne.value.age = 40
+    }
+    const updateNinjaTwo = () => {
+      ninjaTwo.age = 45
     }
 
-    return {name, age, handleClick, p}
+    return {ninjaOne, updateNinjaOne, ninjaTwo, updateNinjaTwo}
   }
   
 }
