@@ -1,0 +1,24 @@
+{
+    "posts" : [
+        {
+            "id" : 1,
+            "title" : "title one",
+            "body" : "fdljfdsssssssssssssssssssssssssssssssssssssssssssss dsfffffffffffffffffffffff dsfffffff dfs dfs  fds dfs fds fds ",
+            "tags" : [
+                "web dev",
+                "coding",
+                "news"
+            ]
+        },
+        {
+            "id" : 2,
+            "title" : "title two",
+            "body" : "fdljfdsssssssssssssssssssssssssssssssssssssssssssss dsfffffffffffffffffffffff dsfffffff dfs dfs  fds dfs fds fds ",
+            "tags" : [
+                "css",
+                "coding",
+                "webdev"
+            ]
+        }
+    ]
+}

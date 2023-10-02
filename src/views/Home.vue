@@ -11,12 +11,23 @@ export default {
   name : 'Home',
   components: {PostList},
   setup(){
-    const posts = ref([
-      {title: 'some title', body: 'lsdfdsf dfd dfd dfddfddfddfd dfddfd dfd dfd dfd dfd dfd dfd dfd dfddfddfddfddfddfddfddfddfddfddfddfddfddfddfddfddfddfddfddfddfddfd dfd dfddfddfddfddfddfddfddfddfddfddfddfddfddfd dfddfddfddfddfddfddfddfddfddfddfddfddfddfddfddfddfddfddfd', id: 1},
-      {title: 'another title', body: 'fdffdsfdsdsfs', id: 2},
-    ])
+    const posts = ref([])
+    const error = ref(null)
 
-    return {posts}
+    const load = async () => {
+      try {
+        let data = await fetch('http://localhost:3000/posts')
+        if(!data.ok){
+          throw Error('no data available')
+        }
+        posts.value = await data.json()
+
+      } catch (error) {
+        error.value = error.message
+      }
+    }
+    load()
+    return {posts, error}
   }
 }
 </script>
